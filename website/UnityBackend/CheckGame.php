@@ -25,20 +25,6 @@ if(count($result->fetch_assoc()) != 0){
 }
 
 
-
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_errno) {
-    printf("Connect failed: %s\n", $con->connect_error);
-    exit();
-}
-if ($result = $conn->query($sql)) {
-    // $result is an object and can be used to fetch row here
-}
-else {
-    printf("Query failed: %s\n", $conn->error);
-}
-
 $conn->close();
 
 ?>
