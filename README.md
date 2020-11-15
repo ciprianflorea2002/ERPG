@@ -1,7 +1,12 @@
 # ERPG
 https://www.youtube.com/watch?v=V65x2oEENso
 
-Inspiration
+# How to test it out
+
+You can find this version deployed on http://35.234.144.15/. Please note that since we don't have a domain and a SSL key, it doesn't work with https, thus some antivirus might flag it as malicious and it won't save your score - but you will still be able to play. We managed to get around this (for now) by disabling the antivirus. Have fun! :)    
+
+
+# Inspiration
 
 Online learning becomes more common due to the current pandemic, but it is hard to keep students engaged in learning. Teachers reported it is not uncommon that students skip classes or missed assignments.
 
@@ -13,7 +18,7 @@ A multiple-choice test will be given in the form of a simple dungeon crawler to 
 
 What it does
 
-Features
+# Features
 
 Teachers can create a game by completing a form in the 'Create Game' Tab. A game consists of 12 questions. Each question comes with a difficulty, 1 correct answer and 3 wrong ones. Each game must have 6 easy questions (difficulty between 1-4), 3 medium questions (5-7) and 3 hard questions (8-10).
 
@@ -34,7 +39,7 @@ We have completed the UI design and game development.
 What we learned
 We learnt a lot about using Unity to make games.
 
-What's next for ERPG
+# What's next for ERPG
 New Features
 Arena (2 vs 2 or 3 vs 3)
 
