@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form action="/ERPG/create" method="post" id="create-from">
+    <form action="/create" method="post" id="create-from">
         
         <div id="easyQuestion1"> 
             <input type="Text" name="question[]" placeholder="Enter an easy qestion" required>
@@ -293,7 +293,7 @@
        
     async function generateGameCode() {
         code = randomCode();
-        let response = await fetch('/ERPG/UnityBackend/CheckGame.php?game=' + code);
+        let response = await fetch('/UnityBackend/CheckGame.php?game=' + code);
         if (response.status === 200) {
             let data = await response.text();
             if(data == 'false')
@@ -306,7 +306,7 @@
         var form = document.getElementById('create-from') || null;
         if(form) {
             code = await generateGameCode()
-            form.action = '/ERPG/create.php?game=' + code
+            form.action = '/create.php?game=' + code
         }
     };
 
