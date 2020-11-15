@@ -2,6 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = $_GET['pass'];
+$table = $_GET['game'];
 $dbname = "questions";
 
 
@@ -13,7 +14,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT question, difficulty, answer, wanswer1, wanswer2, wanswer3 FROM qtable";                      
+$sql = "SELECT question, difficulty, answer, wanswer1, wanswer2, wanswer3 FROM " . $table;                      
 
 $result = $conn->query($sql);
 
