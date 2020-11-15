@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 
-public class database : MonoBehaviour
+public class Database : MonoBehaviour
 {
+    public static Database database;
     private string questions;
-    
-    private int[] indices = {0,1,2,3}; 
-    
+    private const string getItemsURL = "http://35.234.144.15/UnityBackend/GetItems.php?pass=oxhackERPG2020&game=";
+    private const string checkGameURL = "http://35.234.144.15/UnityBackend/CheckGame.php?pass=oxhackERPG2020&game=";
+    private const string postScoreURL = "http://35.234.144.15/UnityBackend/PostScore.php?pass=oxhackERPG2020&game=";
+    public bool exists;
+
     public struct Question 
     {
         private static int[] indices = {0,1,2,3}; 
@@ -30,7 +33,7 @@ public class database : MonoBehaviour
             {
                 if (ans == answersPerm[i]) 
                 {
-                    correctAnswer = i+1;
+                    correctAnswer = i;
                     break;
                 }
             }
@@ -46,20 +49,62 @@ public class database : MonoBehaviour
     public List<Question> mediumQuestions;
     public List<Question> hardQuestions;
 
-    void Start()
+    void Start(){
+        database = this;
+    }
+
+    public IEnumerator CheckGame(string code){
+        exists = false;
+        string uri = checkGameURL + code;
+        
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            if (webRequest.isNetworkError)
+            {
+                Debug.Log(pages[page] + ": Error: " + webRequest.error);
+            }
+            else
+            {
+                if(webRequest.downloadHandler.text.Contains("true"))
+                    exists = true;
+            }
+        }
+    }
+
+    public IEnumerator PostScore(string code, string user, int score){
+        string uri = postScoreURL + code + "&user=" + user + "&score=" + score;
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            if (webRequest.isNetworkError)
+            {
+                Debug.Log(pages[page] + ": Error: " + webRequest.error);
+            }
+        }
+    }
+
+    public void LoadGame(string code)
     {
+        Debug.Log(getItemsURL + code);
         easyQuestions = new List<Question>();
         mediumQuestions = new List<Question>();
         hardQuestions = new List<Question>();
-        StartCoroutine(GetQuestions("http://localhost/UnityBackend/GetItems.php"));
-        
+        StartCoroutine(GetQuestions(getItemsURL + code));
     }
 
     IEnumerator GetQuestions(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-        {
-            // Request and wait for the desired page.
+        { 
             yield return webRequest.SendWebRequest();
 
             string[] pages = uri.Split('/');
@@ -73,7 +118,6 @@ public class database : MonoBehaviour
             {
                 questions = webRequest.downloadHandler.text; 
                 questionarray = JsonConvert.DeserializeObject<List<Question>>(questions);
-                // Debug.Log(questionarray.Count);
                 foreach (var item in questionarray)
                 {
                     item.Shuffle();
@@ -81,14 +125,9 @@ public class database : MonoBehaviour
                     else if (item.difficulty <=7) mediumQuestions.Add(item);
                     else hardQuestions.Add(item);
                 }
-
-
-                // Debug.Log(GetQ(true,2).question);
             }
         }
     }
-
-    
     
     public Question GetRandomEasyQ()
     {
@@ -108,36 +147,32 @@ public class database : MonoBehaviour
             return hardQuestions[r];
     }
 
-    public Question GetQ(bool isBoss, int lives)
+    public Question GetQuestion(bool isBoss, int lives)
     {
-        Question Q;
+        Question q = new Question();
         if (!isBoss) //is mob
         {
-            Q = GetRandomEasyQ();
-            easyQuestions.Remove(Q);
-            return Q;
+            q = GetRandomEasyQ();
+            easyQuestions.Remove(q);
         }
         else //is boss
         {
             if (lives == 1) 
             {
-                Q = GetRandomHardQ();
-                hardQuestions.Remove(Q);
-                return Q;
+                q = GetRandomHardQ();
+                hardQuestions.Remove(q);
             }            
             if (lives == 2) 
             {
-                Q = GetRandomMediumQ();
-                mediumQuestions.Remove(Q);
-                return Q;
+                q = GetRandomMediumQ();
+                mediumQuestions.Remove(q);
             }  
             if (lives == 3)
             {
-                Q = GetRandomEasyQ();
-                easyQuestions.Remove(Q);
-                return Q;
+                q = GetRandomEasyQ();
+                easyQuestions.Remove(q);
             }
         }
-        return new Question();
+        return q;
    }
 }

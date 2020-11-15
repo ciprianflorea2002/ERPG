@@ -2,11 +2,14 @@
 https://www.youtube.com/watch?v=V65x2oEENso
 
 Inspiration
+
 Online learning becomes more common due to the current pandemic, but it is hard to keep students engaged in learning. Teachers reported it is not uncommon that students skip classes or missed assignments.
 
 In light of this, we would like to make remote learning fun and enjoyable by creating an assessment platform with gamification components.
 
+
 A multiple-choice test will be given in the form of a simple dungeon crawler to make it fun. The app also includes other gamification components such as scores and a leader board.
+
 
 What it does
 
@@ -22,7 +25,6 @@ In this dungeon-style game, the ultimate goal is to defeat the boss of the map b
 
 All game scores, calculated by both the accuracy of answers and speed of completion, will be recorded. Players will be shown on the leader board for recognition. 
 
-How we built it
 Challenges we ran into
 Most of our team members had no experience in unity and web development, we spent a lot of time watching tutorials and debugging.
 
