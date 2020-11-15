@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = $_GET['pass'];
 $table = $_GET['game'];
-$dbname = "questions";
+$dbname = "games";
 
 
 // Create connection
