@@ -37,7 +37,7 @@ usort($rows, 'sortScore');
 <style>
 
 .center {
-
+  float:center;
   margin: auto;
 
 }
@@ -65,7 +65,6 @@ usort($rows, 'sortScore');
   color: white;
   position: fixed;
   left: 0; 
-  bottom: 0;
   width: 100%;
   font-size: 1.5vw;
   text-align: center; 
@@ -81,8 +80,11 @@ usort($rows, 'sortScore');
     float: left;
     margin: auto;
 }  
-
-
+.float-child-right {
+    width: 33%;
+    float: right;
+    margin: auto;
+}  
 
 .footer {
   position: fixed;
@@ -93,27 +95,26 @@ usort($rows, 'sortScore');
   font-size: 1vw;
   text-align: center;
 }
-
+a { text-decoration: none; }
 </style>
 <html>
 
 <body style="background-color:rgb(41,41,41);"> 
     <br>
-    <div class="center title">  ERPG </div>
+    <a href="/"> <div class="center title">   ERPG  </div> </a>
     <br>
 <div>
  <div class="float-child">  <img src="images/player.gif" width=80%/>  </div> 
- 
-<?php
+ <div class="float-child-right"> <br><br> <br><img src="images/boss.gif" width="80%" style="float: right;"/>  </div> 
 
-  $html = '<div class=" float-child center">   
+ <div class=" float-child center">   
 
     <form class="center" action="/leaderboard.php" method="get" id="search">
-        <input type="search" id="game" name="game"> <br>
-        <button>Find game</button>
+        <input class="center" type="search" id="game" name="game"> 
+        <button class="center" >Find game</button>
     </form>
 
-    <br><br>  
+    <br>
     <style type="text/css">
 .tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #a9a9a9;border-collapse: collapse;}
 .tftable th {font-size:12px;background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}
@@ -122,32 +123,28 @@ usort($rows, 'sortScore');
 </style>
 
 <table class="tftable" border="1"> 
-<tr><th>Username</th><th>Score</th></tr> ';
-
-foreach($rows as $r){
-    $html = $html . '<tr> 
-		<td>' . $r['username'] . ' </td> 
-		<td>' . $r['score']    . ' </td>
-	  </tr>';
-}
-
-$html = $html .  '</tabel>
-
- </div>
-
- <div class="float-child"> <br><br> <br><img src="images/boss.gif" width="80%" style="float: right;"/>  </div> 
-</div>
+<tr><th>Username</th><th>Score</th></tr> 
 
 
-<div class="footer">
-    <p>Made @ OxfordHack 2020</p> 
-</div>';
-
-echo $html;
-
+<?php
+  $html = '';
+  foreach($rows as $r){
+      $html = $html . '<tr> 
+      <td>' . $r['username'] . ' </td> 
+      <td>' . $r['score']    . ' </td>
+      </tr>';
+  }
+  echo $html ;
 ?>
 
 
+</tabel> </div>
+
+</div>
+
+  <div class="footer">
+    <p>Made @ OxfordHack 2020</p> 
+</div>
 </body>
 
 </html> 
