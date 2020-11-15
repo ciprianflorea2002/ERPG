@@ -14,6 +14,23 @@ if ($conn->connect_error) {
 $result = $conn->query("SELECT * FROM " . $table . "_leaderboard ");
 
 $conn->close();
+
+
+function sortScore($a, $b) {
+    return $a['score'] < $b['score'];
+}
+
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  $rows = array();
+  while($row = $result->fetch_assoc()) {
+    $rows[] = $row;
+  }
+}
+
+usort($rows, 'sortScore');
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +40,7 @@ $conn->close();
 
 <body >
     
-    <form action="/ERPG/leaderboard.php" method="get" id="search">
+    <form action="/leaderboard.php" method="get" id="search">
         <input type="search" id="game" name="game"> <br>
         <button>Find game</button>
     </form>
@@ -32,31 +49,56 @@ $conn->close();
 
 <?php
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  $rows = array();
-  while($row = $result->fetch_assoc()) {
-    $rows[] = $row;
-  }
-} 
 
 if(count($rows) != 0){
-    echo '<tabel> <tr> <th> User </th> <th> Score </th> </tr>';
+
+	print('<style type="text/css">
+.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #a9a9a9;border-collapse: collapse;}
+.tftable th {font-size:12px;background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}
+.tftable tr {background-color:#cdcdcd;}
+.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;}
+</style>
+
+<table class="tftable" border="1"> 
+<tr><th>Username</th><th>Score</th></tr> ');
+
 }
 
 foreach($rows as $r){
-    echo '<tr> 
-		<th>' . $r['username'] . ' </th> 
-		<th>' . $r['score']    . ' </th>
-	</tr>';
+    print('<tr> 
+		<td>' . $r['username'] . ' </td> 
+		<td>' . $r['score']    . ' </td>
+	</tr>');
 }
 
 if(count($rows) != 0){
-    echo "</tabel> ";
+    print("</tabel> ");
 }
 
-?>
 
+
+?>
+<script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyCRfqkLeHNBi9iPSuAEi3fcHqlcW9wcur0",
+    authDomain: "erpg-295700.firebaseapp.com",
+    databaseURL: "https://erpg-295700.firebaseio.com",
+    projectId: "erpg-295700",
+    storageBucket: "erpg-295700.appspot.com",
+    messagingSenderId: "1094285983498",
+    appId: "1:1094285983498:web:3badb50ceabbcd5a57c4f3",
+    measurementId: "G-1SEQ7J74B7"
+  };
+    </script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/8.0.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/8.0.2/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
 
 </body>
 </html>  

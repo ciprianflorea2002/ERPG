@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form action="/ERPG/create" method="post" id="create-from">
+    <form action="/create" method="post" id="create-from">
         
         <div id="easyQuestion1"> 
             <input type="Text" name="question[]" placeholder="Enter an easy qestion" required>
@@ -275,7 +275,27 @@
         </div>
         <button>Create game</button>
     </form>
-    
+    <script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyCRfqkLeHNBi9iPSuAEi3fcHqlcW9wcur0",
+    authDomain: "erpg-295700.firebaseapp.com",
+    databaseURL: "https://erpg-295700.firebaseio.com",
+    projectId: "erpg-295700",
+    storageBucket: "erpg-295700.appspot.com",
+    messagingSenderId: "1094285983498",
+    appId: "1:1094285983498:web:3badb50ceabbcd5a57c4f3",
+    measurementId: "G-1SEQ7J74B7"
+  };
+    </script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.0.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.0.2/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
 </body>
 <script>
 
@@ -293,7 +313,7 @@
        
     async function generateGameCode() {
         code = randomCode();
-        let response = await fetch('/ERPG/UnityBackend/CheckGame.php?game=' + code);
+        let response = await fetch('/UnityBackend/CheckGame.php?game=' + code);
         if (response.status === 200) {
             let data = await response.text();
             if(data == 'false')
@@ -306,7 +326,7 @@
         var form = document.getElementById('create-from') || null;
         if(form) {
             code = await generateGameCode()
-            form.action = '/ERPG/create.php?game=' + code
+            form.action = '/create.php?game=' + code
         }
     };
 
