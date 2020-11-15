@@ -22,5 +22,8 @@ public class EndScreen : MonoBehaviour
         score.text = "score: " + _score;
         StartCoroutine(Database.database.PostScore(StartScreen.startScreen.code.text,
                                 StartScreen.startScreen.username.text, _score));
+
+        if(!_won)
+            PlayerAnimator.SetAnimation(PlayerAnimator.dyingAnimation);
     }
 }

@@ -33,7 +33,7 @@ public class Database : MonoBehaviour
             {
                 if (ans == answersPerm[i]) 
                 {
-                    correctAnswer = i+1;
+                    correctAnswer = i;
                     break;
                 }
             }

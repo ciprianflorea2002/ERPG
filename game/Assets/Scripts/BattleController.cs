@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class BattleController : MonoBehaviour
 {
+    public Color correctAnswerColor;
+    public Color wrongAnswerColor;
+    public Color neutralAnswerColor;
+
     public static BattleController battleController;
     Database.Question question;
 
     public Text questionText;
-    public Text answer1Text;
-    public Text answer2Text;
-    public Text answer3Text;
-    public Text answer4Text;
+    public Text[] answers;
 
     public GameObject mob;
     public GameObject boss;
+    public GameObject deadMob;
+    public GameObject deadBoss;
 
     int enemyLivesRemaining = 3;
     public SpriteRenderer enemyLivesSprite;
@@ -23,8 +26,11 @@ public class BattleController : MonoBehaviour
     public int playerLivesRemaining = 3;
     public SpriteRenderer playerLivesSprite;
 
+    public GameObject continueButton;
+
     private Sprite[] spriteArray;
     private bool againstBoss;
+    private bool waiting;
 
     void Start()
     {
@@ -36,25 +42,59 @@ public class BattleController : MonoBehaviour
     }
 
     public void SelectAnswer(int ans){
+        if(waiting) return;
+
         if(ans == question.correctAnswer){
             enemyLivesRemaining --;
             if(againstBoss)
                 enemyLivesSprite.sprite = spriteArray[enemyLivesRemaining];
             else
                 enemyLivesSprite.sprite = spriteArray[4];
+            if(enemyLivesRemaining == 0){
+                if(againstBoss) { boss.SetActive(false); deadBoss.SetActive(true); }
+                else {mob.SetActive(false); deadMob.SetActive(true); }
+            }
+
+            StartCoroutine(WaitForAMoment());
         }
         else{
             playerLivesRemaining --;
             playerLivesSprite.sprite = spriteArray[playerLivesRemaining];
+
+            StartCoroutine(WaitForButtonPress());
         }
 
-        if(enemyLivesRemaining == 0 || playerLivesRemaining == 0){
+        answers[ans].color = wrongAnswerColor;
+        answers[question.correctAnswer].color = correctAnswerColor;
+
+
+    }
+
+    IEnumerator WaitForButtonPress(){
+        waiting = true;
+        float time = Time.time;
+        continueButton.SetActive(true);
+        while(waiting) yield return null;
+
+        GameController.gameController.startTime += Time.time - time;
+        Continue();
+    }
+
+    IEnumerator WaitForAMoment(){
+        yield return new WaitForSeconds(1.5f);
+        Continue();
+    }
+
+    private void Continue(){
+         if(enemyLivesRemaining == 0 || playerLivesRemaining == 0){
             gameObject.SetActive(false);  
             GameController.gameController.EndBattle(playerLivesRemaining != 0);
-            return;
-        }
+        } else 
+            nextQuestion();
+    }
 
-        nextQuestion();
+    public void ContinueButtonPress(){
+        waiting = false;
     }
 
     public void StartBattle(bool boss){
@@ -65,11 +105,15 @@ public class BattleController : MonoBehaviour
         if(boss){
             this.boss.SetActive(true);
             this.mob .SetActive(false);
+            deadMob.SetActive(false);
+            deadBoss.SetActive(false);
             enemyLivesSprite.sprite = spriteArray[3];
             enemyLivesRemaining = 3;
         } else {
             this.boss.SetActive(false);
             this.mob .SetActive(true);
+            deadMob.SetActive(false);
+            deadBoss.SetActive(false);
             enemyLivesSprite.sprite = spriteArray[5];
             enemyLivesRemaining = 1;
         }
@@ -78,12 +122,17 @@ public class BattleController : MonoBehaviour
     }
 
     void nextQuestion(){
+        continueButton.SetActive(false);
+
         question = Database.database.GetQuestion(againstBoss, enemyLivesRemaining);
 
         questionText.text = question.question;
-        answer1Text.text = question.answer;
-        answer2Text.text = question.wanswer1;
-        answer3Text.text = question.wanswer2;
-        answer4Text.text = question.wanswer3;       
+        answers[0].text = question.answer;
+        answers[1].text = question.wanswer1;
+        answers[2].text = question.wanswer2;
+        answers[3].text = question.wanswer3;  
+
+        foreach (var it in answers)
+            it.color = neutralAnswerColor;     
     }
 }

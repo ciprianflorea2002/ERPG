@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     }
 
     void Start (){
-        facing = Direction.Up;
+        facing = Direction.Down;
     }
 
     void Update()
@@ -38,24 +38,20 @@ public class Movement : MonoBehaviour
         
         if(!moving && CanMoveIn(dir)) 
             StartCoroutine(Move(dir));
-        
-
     }
 
     private IEnumerator Move(Direction dir)
     {
         moving = true;
-        if(facing != dir)
-            TurnTo(dir);
+        if(facing != dir){
+            facing = dir;
+            PlayerAnimator.TurnTo(dir);
+        }
         gameObject.transform.position += dir.ToVector3();
         yield return new WaitForSeconds( 1 / speed );
         if(Map.map.GetCell(gameObject.transform.position) != Map.CellType.Empty)
             GameController.gameController.StepOn(gameObject.transform.position);   
         moving = false;
-    }
-
-    private void TurnTo(Direction dir){
-        facing = dir;
     }
 
     private bool CanMoveIn(Direction dir){

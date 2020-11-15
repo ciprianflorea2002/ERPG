@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     public GameObject mobObject;
     public GameObject bossObject;
 
-    private float startTime;
+    public float startTime;
     
     void Start(){
         gameController = this;
@@ -46,7 +46,10 @@ public class GameController : MonoBehaviour
     public void EndBattle(bool alive){
         if(!alive || enemies.Count == 0){
             var score =  10000 / (Time.time - startTime) + 
-                    100 * BattleController.battleController.playerLivesRemaining; 
+                    100 * BattleController.battleController.playerLivesRemaining ;
+            if(!alive)
+                score = 0;
+            score += 50 * (4 - enemies.Count); 
             EndScreen.endScreen.End(alive, (int)score);
         }
         else
