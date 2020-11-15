@@ -118,7 +118,7 @@ usort($rows, 'sortScore');
 
 if(count($rows) != 0){
 
-	print('<style type="text/css">
+	echo '<style type="text/css">
 .tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #a9a9a9;border-collapse: collapse;}
 .tftable th {font-size:12px;background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}
 .tftable tr {background-color:#cdcdcd;}
@@ -126,19 +126,19 @@ if(count($rows) != 0){
 </style>
 
 <table class="tftable" border="1"> 
-<tr><th>Username</th><th>Score</th></tr> ');
+<tr><th>Username</th><th>Score</th></tr> ' ;
 
 }
 
 foreach($rows as $r){
-    print('<tr> 
+    echo '<tr> 
 		<td>' . $r['username'] . ' </td> 
 		<td>' . $r['score']    . ' </td>
-	</tr>');
+	</tr>';
 }
 
 if(count($rows) != 0){
-    print("</tabel> ");
+    echo "</tabel> ";
 }
 
 ?>
