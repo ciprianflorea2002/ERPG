@@ -2,31 +2,28 @@
 https://www.youtube.com/watch?v=V65x2oEENso
 
 Inspiration
+
 Online learning becomes more common due to the current pandemic, but it is hard to keep students engaged in learning. Teachers reported it is not uncommon that students skip classes or missed assignments.
 
-In light of this, we would like to make remote learning fun and enjoyable by creating a peer learning platform with gamification components.
+In light of this, we would like to make remote learning fun and enjoyable by creating an assessment platform with gamification components.
 
-Quiz/ test/ assignment will be given in the form of dungeons/ arena/ battleground to make it fun. The app also includes other gamification components such as a leader board and leveling up.
+The multiple choice test will be given in the form of a dungeon crawler to make it fun. The app also includes other gamification components such as scores and a leader board.
 
 What it does
+
 Features
-Students can use the code given by their teachers to register.
 
-After logging in, students can customize their profile.
+Students can use the code given by their teachers to join a game by choosing a username.
 
-On the home page, students can view the assignment for today in the form of a mission and bonus quests.
+The dungeon is the default mode for assignments, in which users will need to explore the map and defeat multiple mobs by answering questions. A mob is defeated when the player manages to answer a question correctly. To win the game they have to defeat the boss of the map which requires the player to answer 3 questions correctly with increasing difficulty. The player has only 3 lives and each incorrect answer removes 1 life. A mob has 1 life, while the boss has 3.
 
-Dungeons will be the default mode for assignments, in which users will need to defeat the boss of a chosen map by answering questions to move the character or attack.
-
-For arena and battlegrounds, students can go to the community page to see who is online and form teams or join a team to play the game.
-
-All game scores, calculated by both the accuracy of answers and speed of completion, will be recorded. Points and experience proportional to their performance will be given to players.
-
-Top players will be shown on the leader board and they will receive a trophy for recognition. The leader board will be refreshed every week.
+All game scores, calculated by both the accuracy of answers and speed of completion, will be recorded. The players will be shown on the leader board for recognition.
 
 How we built it
+
+
 Challenges we ran into
-Most of our team members had no experience in unity and web development, we have a lot of time watching tutorials and debugging.
+Most of our team members had no experience in unity and web development, we spent a lot of time watching tutorials and debugging.
 
 Accomplishments that we're proud of
 We have completed the UI design and game development.
