@@ -11,9 +11,9 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$data = $conn->query("SELECT (username, score) FROM " . $table . "_leaderboard ");
-echo $data;
+$result = $conn->query("SELECT * FROM " . $table . "_leaderboard ");
 
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -32,15 +32,26 @@ echo $data;
 
 <?php
 
-if(count($data) != 0){
-    echo "<tabel> <tr> <th> User </th> <th> Score </th> </tr> <\n>";
+if ($result->num_rows > 0) {
+  // output data of each row
+  $rows = array();
+  while($row = $result->fetch_assoc()) {
+    $rows[] = $row;
+  }
+} 
+
+if(count($rows) != 0){
+    echo '<tabel> <tr> <th> User </th> <th> Score </th> </tr>';
 }
 
-foreach($data as $row){
-    echo "<tr> " . $row . "</tr>";
+foreach($rows as $r){
+    echo '<tr> 
+		<th>' . $r['username'] . ' </th> 
+		<th>' . $r['score']    . ' </th>
+	</tr>';
 }
 
-if(count($data) != 0){
+if(count($rows) != 0){
     echo "</tabel> ";
 }
 
