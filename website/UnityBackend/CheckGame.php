@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = addslashes($_GET['pass']);
+$password = "oxhackERPG2020";
 $table = addslashes($_GET['game']);
 $dbname = "games";
 

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create game</title>
+</head>
+<body>
+
+    <form action="/ERPG/create" method="post" id="create-from">
+        
+        <div id="easyQuestion1"> 
+            <input type="Text" name="question[]" placeholder="Enter an easy qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="1" required>
+            <br>
+        </div>
+        <div id="easyQuestion2"> 
+            <input type="Text" name="question[]" placeholder="Enter an easy qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="1" required>
+            <br>
+        </div>
+        <div id="easyQuestion3"> 
+            <input type="Text" name="question[]" placeholder="Enter an easy qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="1" required>
+            <br>
+        </div>
+        <div id="easyQuestion4"> 
+            <input type="Text" name="question[]" placeholder="Enter an easy qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="1" required>
+            <br>
+        </div>
+        <div id="easyQuestion5"> 
+            <input type="Text" name="question[]" placeholder="Enter an easy qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="1" required>
+            <br>
+        </div>
+        <div id="easyQuestion6"> 
+            <input type="Text" name="question[]" placeholder="Enter an easy qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="1" required>
+            <br>
+        </div>
+        <div id="mediumQuestion1"> 
+            <input type="Text" name="question[]" placeholder="Enter a medium qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="6" required>
+            <br>
+        </div>
+        <div id="mediumQuestion2"> 
+            <input type="Text" name="question[]" placeholder="Enter a medium qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="6" required>
+            <br>
+        </div>
+        <div id="mediumQuestion3"> 
+            <input type="Text" name="question[]" placeholder="Enter a medium qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="6" required>
+            <br>
+        </div>
+        <div id="hardQuestion1"> 
+            <input type="Text" name="question[]" placeholder="Enter a hard qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="10" required>
+            <br>
+        </div>
+        <div id="hardQuestion2"> 
+            <input type="Text" name="question[]" placeholder="Enter a hard qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="10" required>
+            <br>
+        </div>
+        <div id="hardQuestion3"> 
+            <input type="Text" name="question[]" placeholder="Enter a hard qestion" required>
+            <input type="Text" name="ans1[]" placeholder="Enter the correct answer" required>
+            <input type="Text" name="ans2[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans3[]" placeholder="Enter a wrong answer" required>
+            <input type="Text" name="ans4[]" placeholder="Enter a wrong answer" required>
+            <input type="hidden" name="dif[]" value="10" required>
+            <br>
+        </div>
+        <button>Create game</button>
+    </form>
+    
+</body>
+<script>
+
+    const randomCode = (length = 4) => {
+        let chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+        let str = '';
+        for (let i = 0; i < length; i++) {
+            str += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+    
+        return str;
+    
+    };
+       
+    async function generateGameCode() {
+        code = randomCode();
+        let response = await fetch('/ERPG/UnityBackend/CheckGame.php?game=' + code);
+        if (response.status === 200) {
+            let data = await response.text();
+            if(data == 'false')
+               return code;
+        } 
+        return generateGameCode();
+    }
+
+    window.onload = async function(){
+        var form = document.getElementById('create-from') || null;
+        if(form) {
+            code = await generateGameCode()
+            form.action = '/ERPG/create.php?game=' + code
+        }
+    };
+
+</script>
+
+</html>
