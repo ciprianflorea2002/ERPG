@@ -8,7 +8,10 @@ public class Database : MonoBehaviour
 {
     public static Database database;
     private string questions;
-    private const string getItemsURL = "http://35.234.144.15/ERPG/UnityBackend/GetItems.php?pass=oxhackERPG2020";
+    private const string getItemsURL = "http://35.234.144.15/ERPG/UnityBackend/GetItems.php?pass=oxhackERPG2020&game=";
+    private const string checkGameURL = "http://35.234.144.15/ERPG/UnityBackend/CheckGame.php?pass=oxhackERPG2020&game=";
+    private const string postScoreURL = "http://35.234.144.15/ERPG/UnityBackend/PostScore.php?pass=oxhackERPG2020&game=";
+    public bool exists;
 
     public struct Question 
     {
@@ -46,21 +49,62 @@ public class Database : MonoBehaviour
     public List<Question> mediumQuestions;
     public List<Question> hardQuestions;
 
-    void Start()
-    {
+    void Start(){
         database = this;
+    }
+
+    public IEnumerator CheckGame(string code){
+        exists = false;
+        string uri = checkGameURL + code;
+        
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            if (webRequest.isNetworkError)
+            {
+                Debug.Log(pages[page] + ": Error: " + webRequest.error);
+            }
+            else
+            {
+                if(webRequest.downloadHandler.text.Contains("true"))
+                    exists = true;
+            }
+        }
+    }
+
+    public IEnumerator PostScore(string code, string user, int score){
+        string uri = postScoreURL + code + "&user=" + user + "&score=" + score;
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            if (webRequest.isNetworkError)
+            {
+                Debug.Log(pages[page] + ": Error: " + webRequest.error);
+            }
+        }
+    }
+
+    public void LoadGame(string code)
+    {
+        Debug.Log(getItemsURL + code);
         easyQuestions = new List<Question>();
         mediumQuestions = new List<Question>();
         hardQuestions = new List<Question>();
-        StartCoroutine(GetQuestions(getItemsURL));
-        
+        StartCoroutine(GetQuestions(getItemsURL + code));
     }
 
     IEnumerator GetQuestions(string uri)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
-        {
-            // Request and wait for the desired page.
+        { 
             yield return webRequest.SendWebRequest();
 
             string[] pages = uri.Split('/');

@@ -11,9 +11,14 @@ public class GameController : MonoBehaviour
 
     public GameObject mobObject;
     public GameObject bossObject;
+
+    private float startTime;
     
     void Start(){
         gameController = this;
+
+        gameObject.SetActive(false);
+
         enemies = new Dictionary<Vector3, GameObject>();
         
         new Map("default");
@@ -39,10 +44,18 @@ public class GameController : MonoBehaviour
     }
 
     public void EndBattle(bool alive){
-        if(!alive || enemies.Count == 0)
-            EndScreen.endScreen.End(alive);
+        if(!alive || enemies.Count == 0){
+            var score =  10000 / (Time.time - startTime) + 
+                    100 * BattleController.battleController.playerLivesRemaining; 
+            EndScreen.endScreen.End(alive, (int)score);
+        }
         else
             gameObject.SetActive(true);
+    }
+
+    public void StartGame(){
+        startTime = Time.time;
+        gameObject.SetActive(true);
     }
 
 }

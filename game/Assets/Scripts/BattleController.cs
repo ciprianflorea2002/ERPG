@@ -20,7 +20,7 @@ public class BattleController : MonoBehaviour
     int enemyLivesRemaining = 3;
     public SpriteRenderer enemyLivesSprite;
 
-    int playerLivesRemaining = 3;
+    public int playerLivesRemaining = 3;
     public SpriteRenderer playerLivesSprite;
 
     private Sprite[] spriteArray;

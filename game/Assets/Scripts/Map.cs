@@ -26,14 +26,11 @@ public class Map
     }
 
     public CellType GetCell(Vector2 pos){
-        Debug.Log(pos);
         if(pos.x < minX || pos.x > maxX || pos.y < minY || pos.y > maxY)
             return CellType.Wall;
-        Debug.Log("a");
         CellType type;
         if(mapData.TryGetValue(pos, out type))
             return type;
-        Debug.Log("b");
         return CellType.Empty;
     }
 
