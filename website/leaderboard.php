@@ -5,9 +5,18 @@ $password = "oxhackERPG2020";
 $table = addslashes($_GET['game']);
 $dbname = "games";
 
-if($table == ""){
-    echo '
-    <!DOCTYPE html>
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$data = $conn->query("SELECT (username, score) FROM " . $table . "_leaderboard ");
+echo $data;
+
+?>
+
+<!DOCTYPE html>
 <style>
 </style>
 <html>
@@ -18,20 +27,25 @@ if($table == ""){
         <input type="search" id="game" name="game"> <br>
         <button>Find game</button>
     </form>
-    
 
-</body>
-</html> ';
-return;
-} 
+    <br><br>
 
-echo $table;
+<?php
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if(count($data) != 0){
+    echo "<tabel> <tr> <th> User </th> <th> Score </th> </tr> <\n>";
 }
 
+foreach($data as $row){
+    echo "<tr> " . $row . "</tr>";
+}
+
+if(count($data) != 0){
+    echo "</tabel> ";
+}
 
 ?>
+
+
+</body>
+</html>  
