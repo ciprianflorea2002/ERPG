@@ -4,35 +4,33 @@ https://www.youtube.com/watch?v=V65x2oEENso
 Inspiration
 Online learning becomes more common due to the current pandemic, but it is hard to keep students engaged in learning. Teachers reported it is not uncommon that students skip classes or missed assignments.
 
-In light of this, we would like to make remote learning fun and enjoyable by creating a peer learning platform with gamification components.
+In light of this, we would like to make remote learning fun and enjoyable by creating an assessment platform with gamification components.
 
-Quiz/ test/ assignment will be given in the form of dungeons/ arena/ battleground to make it fun. The app also includes other gamification components such as a leader board and leveling up.
+A multiple-choice test will be given in the form of a simple dungeon crawler to make it fun. The app also includes other gamification components such as scores and a leader board.
 
 What it does
+
 Features
-Students can use the code given by their teachers to register.
 
-After logging in, students can customize their profile.
+Teachers can create a game by completing a form in the 'Create Game' Tab. A game consists of 12 questions. Each question comes with a difficulty, 1 correct answer and 3 wrong ones. Each game must have 6 easy questions (difficulty between 1-4), 3 medium questions (5-7) and 3 hard questions (8-10).
 
-On the home page, students can view the assignment for today in the form of a mission and bonus quests.
+Adding the test in the 'Create Game' tab generates a code and students can use the code given by their teachers to join a game.
 
-Dungeons will be the default mode for assignments, in which users will need to defeat the boss of a chosen map by answering questions to move the character or attack.
+On the 'Play Game' page, students can play a game by typing the code of the game and choosing their username.
 
-For arena and battlegrounds, students can go to the community page to see who is online and form teams or join a team to play the game.
+In this dungeon-style game, the ultimate goal is to defeat the boss of the map by answering questions. The player starts with 3 lives. Upon exploring the map, the player will encounter mobs (which have 1 life) and, at the end, one final boss (which has 3 lives). The mobs can be defeated by answering a question correctly, but be careful - every wrong answer you give removes 1 life! To defeat the boss you will have to answer 3 questions correctly, which will come in increasing difficulty.
 
-All game scores, calculated by both the accuracy of answers and speed of completion, will be recorded. Points and experience proportional to their performance will be given to players.
-
-Top players will be shown on the leader board and they will receive a trophy for recognition. The leader board will be refreshed every week.
+All game scores, calculated by both the accuracy of answers and speed of completion, will be recorded. Players will be shown on the leader board for recognition. 
 
 How we built it
 Challenges we ran into
-Most of our team members had no experience in unity and web development, we have a lot of time watching tutorials and debugging.
+Most of our team members had no experience in unity and web development, we spent a lot of time watching tutorials and debugging.
 
 Accomplishments that we're proud of
 We have completed the UI design and game development.
 
 What we learned
-Most of our team members had no experience in unity and web development, we learnt a lot about using Unity to make games.
+We learnt a lot about using Unity to make games.
 
 What's next for ERPG
 New Features
