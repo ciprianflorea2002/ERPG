@@ -35,12 +35,78 @@ usort($rows, 'sortScore');
 
 <!DOCTYPE html>
 <style>
+
+.center {
+
+  margin: auto;
+
+}
+.btn-group button {
+  display: flex;
+  justify-content: center;
+  background-color: #4CAF50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 7% 10px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 90%; /* Set a width if needed */ 
+  display: block; /* Make the buttons appear below each other */
+  font-size: 3vw;
+}
+.title {
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  font-size: 5vw;
+} 
+
+.info {
+  color: white;
+  position: fixed;
+  left: 0; 
+  bottom: 0;
+  width: 100%;
+  font-size: 1.5vw;
+  text-align: center; 
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+
+.float-child {
+    width: 33%;
+    float: left;
+    margin: auto;
+}  
+
+
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  font-size: 1vw;
+  text-align: center;
+}
+
 </style>
 <html>
 
-<body >
-    
-    <form action="/leaderboard.php" method="get" id="search">
+<body style="background-color:rgb(41,41,41);"> 
+    <br>
+    <div class="center title">  ERPG </div>
+    <br>
+<div>
+ <div class="float-child">  <img src="images/player.gif" width=80%/>  </div> 
+ 
+ <div class=" float-child center">   
+
+    <form class="center" action="/leaderboard.php" method="get" id="search">
         <input type="search" id="game" name="game"> <br>
         <button>Find game</button>
     </form>
@@ -77,5 +143,15 @@ if(count($rows) != 0){
 
 ?>
 
+ </div>
+
+ <div class="float-child"> <br><br> <br><img src="images/boss.gif" width="80%" style="float: right;"/>  </div> 
+</div>
+
+
+<div class="footer">
+    <p>Made @ OxfordHack 2020</p> 
+</div>
 </body>
-</html>  
+
+</html> 
