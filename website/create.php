@@ -49,7 +49,20 @@ while ($it < $count){
 $conn->close();
 
 echo '<body> 
-<h1> Game code: ". $table ."  </h1> <!-- The core Firebase JS SDK is always required and must be listed first -->
+<h1> Game code: ". $table ."  </h1> 
+<script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyCRfqkLeHNBi9iPSuAEi3fcHqlcW9wcur0",
+    authDomain: "erpg-295700.firebaseapp.com",
+    databaseURL: "https://erpg-295700.firebaseio.com",
+    projectId: "erpg-295700",
+    storageBucket: "erpg-295700.appspot.com",
+    messagingSenderId: "1094285983498",
+    appId: "1:1094285983498:web:3badb50ceabbcd5a57c4f3",
+    measurementId: "G-1SEQ7J74B7"
+  };
+    </script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="/__/firebase/8.0.2/firebase-app.js"></script>
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
