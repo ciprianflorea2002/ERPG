@@ -1,10 +1,10 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = $_GET['pass'];
-$table = $_GET['game'] + "_leaderboard";
-$user = $_GET['user'];
-$score = $_GET['score'];
+$password = addslashes($_GET['pass']);
+$table = addslashes($_GET['game']) . "_leaderboard";
+$user = addslashes($_GET['user']);
+$score = addslashes($_GET['score']);
 $dbname = "games";
 
 
@@ -23,13 +23,13 @@ $result = $conn->query($sql);
 if(count($result->fetch_assoc()) == 0){
     $sql = "CREATE TABLE " . $table . " ( username VARCHAR(30) NOT NULL, score INT(6) NOT NULL)";    
     if ($conn->query($sql) === TRUE) {
-        echo "Table MyGuests created successfully";
+        echo "Table " . $table . " created successfully";
     } else {
         echo "Error creating table: " . $conn->error;
     }
 }
 
-$sql = "INSERT INTO " . $table . "(username, score) VALUES(" . $user . ", " . $score . ") ";
+$sql = "INSERT INTO " . $table . "(username, score) VALUES('" . $user . "', " . $score . ") ";
 $result = $conn->query($sql);
 
 

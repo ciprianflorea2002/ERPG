@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = $_GET['pass'];
-$table = $_GET['game'];
+$password = addslashes($_GET['pass']);
+$table = addslashes($_GET['game']);
 $dbname = "games";
 
 
