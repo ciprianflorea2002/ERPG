@@ -104,21 +104,17 @@ usort($rows, 'sortScore');
 <div>
  <div class="float-child">  <img src="images/player.gif" width=80%/>  </div> 
  
- <div class=" float-child center">   
+<?php
+
+  $html = '<div class=" float-child center">   
 
     <form class="center" action="/leaderboard.php" method="get" id="search">
         <input type="search" id="game" name="game"> <br>
         <button>Find game</button>
     </form>
 
-    <br><br>
-
-<?php
-
-
-if(count($rows) != 0){
-
-	echo '<style type="text/css">
+    <br><br>  
+    <style type="text/css">
 .tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #a9a9a9;border-collapse: collapse;}
 .tftable th {font-size:12px;background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}
 .tftable tr {background-color:#cdcdcd;}
@@ -126,22 +122,16 @@ if(count($rows) != 0){
 </style>
 
 <table class="tftable" border="1"> 
-<tr><th>Username</th><th>Score</th></tr> ' ;
-
-}
+<tr><th>Username</th><th>Score</th></tr> ';
 
 foreach($rows as $r){
-    echo '<tr> 
+    $html += '<tr> 
 		<td>' . $r['username'] . ' </td> 
 		<td>' . $r['score']    . ' </td>
-	</tr>';
+	  </tr>';
 }
 
-if(count($rows) != 0){
-    echo "</tabel> ";
-}
-
-?>
+$html += '</tabel>
 
  </div>
 
@@ -151,7 +141,13 @@ if(count($rows) != 0){
 
 <div class="footer">
     <p>Made @ OxfordHack 2020</p> 
-</div>
+</div>';
+
+echo $html;
+
+?>
+
+
 </body>
 
 </html> 
