@@ -70,6 +70,11 @@ usort($rows, 'sortScore');
   text-align: center; 
 }
 
+.text {
+  color: black;
+  font-size: 2vw;
+}
+
 /* Add a background color on hover */
 .btn-group button:hover {
   background-color: #3e8e41;
@@ -88,12 +93,12 @@ usort($rows, 'sortScore');
 
 .footer {
   position: fixed;
-  left: 0;
+  left: 10%;
   bottom: 0;
   width: 100%;
   color: white;
   font-size: 1vw;
-  text-align: center;
+  text-align: left;
 }
 a { text-decoration: none; }
 </style>
@@ -109,29 +114,29 @@ a { text-decoration: none; }
 
  <div class=" float-child center">   
 
-    <form class="center" action="/leaderboard.php" method="get" id="search">
-        <input class="center" type="search" id="game" name="game"> 
-        <button class="center" >Find game</button>
+    <form class="center " action="/leaderboard.php" method="get" id="search">
+        <input class="center text" type="search" id="game" name="game" width="20%"> 
+        <button class="center text" width="20%">Find game</button>
     </form>
 
     <br>
     <style type="text/css">
-.tftable {font-size:12px;color:#333333;width:100%;border-width: 1px;border-color: #a9a9a9;border-collapse: collapse;}
-.tftable th {font-size:12px;background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}
+.tftable {color:#333333;width:100%;border-width: 1px;border-color: #a9a9a9;border-collapse: collapse;}
+.tftable th {background-color:#b8b8b8;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;text-align:left;}
 .tftable tr {background-color:#cdcdcd;}
-.tftable td {font-size:12px;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;}
+.tftable td {border-width: 1px;padding: 8px;border-style: solid;border-color: #a9a9a9;}
 </style>
 
-<table class="tftable" border="1"> 
-<tr><th>Username</th><th>Score</th></tr> 
+<table class="tftable text" border="1"> 
+<tr class = "text"><th class = "text">Username</th><th class = "text">Score</th></tr> 
 
 
 <?php
   $html = '';
   foreach($rows as $r){
       $html = $html . '<tr> 
-      <td>' . $r['username'] . ' </td> 
-      <td>' . $r['score']    . ' </td>
+      <td class = "text">' . $r['username'] . ' </td> 
+      <td class = "text">' . $r['score']    . ' </td>
       </tr>';
   }
   echo $html ;
