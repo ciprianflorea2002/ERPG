@@ -123,7 +123,7 @@ public class BattleController : MonoBehaviour
 
     void nextQuestion(){
         continueButton.SetActive(false);
-
+        
         question = Database.database.GetQuestion(againstBoss, enemyLivesRemaining);
 
         questionText.text = question.question;
@@ -132,7 +132,11 @@ public class BattleController : MonoBehaviour
         answers[2].text = question.wanswer2;
         answers[3].text = question.wanswer3;  
 
+        if(againstBoss) questionText.text = "Dragon says: \"" +question.question + "\"";
+        else questionText.text = "Snake says: \"" +question.question + "\"";
+
         foreach (var it in answers)
-            it.color = neutralAnswerColor;     
+            it.color = neutralAnswerColor;   
+  
     }
 }
