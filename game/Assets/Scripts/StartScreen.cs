@@ -22,13 +22,13 @@ public class StartScreen : MonoBehaviour
     IEnumerator LoadGame(){
 
         if(username.text == "" || code.text == "")
-            error.text = "Data is invalid";
+            error.text = "Game code and username can not be empty";
         else{
             bool exists = false;
             yield return Database.database.CheckGame(code.text);
 
             if(!Database.database.exists)
-                error.text = "Data is invalid";
+                error.text = "Game does not exists";
             else{
                 Database.database.LoadGame(code.text);
                 gameObject.SetActive(false);
