@@ -8,9 +8,9 @@ public class Database : MonoBehaviour
 {
     public static Database database;
     private string questions;
-    private const string getItemsURL = "http://35.234.144.15/ERPG/UnityBackend/GetItems.php?pass=oxhackERPG2020&game=";
-    private const string checkGameURL = "http://35.234.144.15/ERPG/UnityBackend/CheckGame.php?pass=oxhackERPG2020&game=";
-    private const string postScoreURL = "http://35.234.144.15/ERPG/UnityBackend/PostScore.php?pass=oxhackERPG2020&game=";
+    private const string getItemsURL = "http://35.234.144.15/UnityBackend/GetItems.php?pass=oxhackERPG2020&game=";
+    private const string checkGameURL = "http://35.234.144.15/UnityBackend/CheckGame.php?pass=oxhackERPG2020&game=";
+    private const string postScoreURL = "http://35.234.144.15/UnityBackend/PostScore.php?pass=oxhackERPG2020&game=";
     public bool exists;
 
     public struct Question 
