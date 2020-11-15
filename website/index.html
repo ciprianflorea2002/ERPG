@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <style>
-    .button {
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-    
-    .button1 {background-color: #4CAF50;} /* Green */
-    .button2 {background-color: #008CBA;} /* Blue */
+
+   .center {
+
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+
+}
+.btn-group button {
+  display: flex;
+  justify-content: center;
+  background-color: #4CAF50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 100px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  width: 70%; /* Set a width if needed */ 
+display: block; /* Make the buttons appear below each other */
+}
+
+.btn-group button:not(:last-child) {
+  border-bottom: 50%; /* Prevent double borders */
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
 </style>
 <html>
 
-<body style="background-color:rgb(41,41,41);">
+<body >
+ <div class="btn-group center">
 
-    <button type="button" onclick="window.location.href='http://35.234.144.15/create-game.html';">Create game</button> 
-    <button type="button" onclick="window.location.href='http://35.234.144.15/game';">Play game</button> 
-    <button type="button" onclick="window.location.href='http://35.234.144.15/leaderboard.php';">Leaderboard</button> 
-  
+    <button class="center" type="button" onclick="window.location.href='http://35.234.144.15/create-game.html';">Create game</button> 
+    <button class="center" type="button" onclick="window.location.href='http://35.234.144.15/game';">Play game</button> 
+    <button class="center" type="button" onclick="window.location.href='http://35.234.144.15/leaderboard.php';">Leaderboard</button> 
+
+ </div>
+
+
 </body>
 </html> 
