@@ -125,13 +125,13 @@ usort($rows, 'sortScore');
 <tr><th>Username</th><th>Score</th></tr> ';
 
 foreach($rows as $r){
-    $html += '<tr> 
+    $html = $html . '<tr> 
 		<td>' . $r['username'] . ' </td> 
 		<td>' . $r['score']    . ' </td>
 	  </tr>';
 }
 
-$html += '</tabel>
+$html = $html .  '</tabel>
 
  </div>
 
